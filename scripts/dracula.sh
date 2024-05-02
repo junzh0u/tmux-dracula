@@ -187,6 +187,10 @@ main() {
         colors[1]="dark_gray"
         script="${script} not found!"
       fi
+    
+    elif [ $plugin = "synology-cpu-temp" ]; then
+      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-cpu-temp-colors" "orange dark_gray")
+      script="#($current_dir/synology_cpu_temp.sh)"
 
     elif [ $plugin = "cwd" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-cwd-colors" "dark_gray white")
