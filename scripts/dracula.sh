@@ -192,6 +192,11 @@ main() {
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-cpu-temp-colors" "orange dark_gray")
       script="#($current_dir/synology_cpu_temp.sh)"
 
+    elif [ $plugin = "synology-disk-temp" ]; then
+      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-disk-temp-colors" "pink dark_gray")
+      disknum=$(get_tmux_option "@dracula-synology-disk-temp-disknum" "12")
+      script="#($current_dir/synology_disk_temp.sh $disknum)"
+
     elif [ $plugin = "cwd" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-cwd-colors" "dark_gray white")
       tmux set-option -g status-right-length 250
