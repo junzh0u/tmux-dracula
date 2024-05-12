@@ -188,6 +188,10 @@ main() {
         script="${script} not found!"
       fi
     
+    elif [ $plugin = "uptime" ]; then
+      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-uptime-colors" "dark_gray white")
+      script="#($current_dir/uptime.sh)"
+    
     elif [ $plugin = "synology-cpu-temp" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-cpu-temp-colors" "orange dark_gray")
       script="#($current_dir/synology_cpu_temp.sh)"
