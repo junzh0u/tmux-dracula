@@ -191,13 +191,17 @@ main() {
     elif [ $plugin = "uptime" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-uptime-colors" "dark_gray white")
       script="#($current_dir/uptime.sh)"
+
+    elif [ $plugin = "synology-fan-speed" ]; then
+      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-fan-speed-colors" "cyan dark_gray")
+      script="#($current_dir/synology_fan_speed.sh)"
     
     elif [ $plugin = "synology-cpu-temp" ]; then
-      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-cpu-temp-colors" "orange dark_gray")
+      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-cpu-temp-colors" "dark_purple white")
       script="#($current_dir/synology_cpu_temp.sh)"
 
     elif [ $plugin = "synology-disk-temp" ]; then
-      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-disk-temp-colors" "pink dark_gray")
+      IFS=' ' read -r -a colors  <<< $(get_tmux_option "@dracula-synology-disk-temp-colors" "light_purple dark_gray")
       disknum=$(get_tmux_option "@dracula-synology-disk-temp-disknum" "12")
       script="#($current_dir/synology_disk_temp.sh $disknum)"
 
