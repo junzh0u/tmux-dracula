@@ -1,7 +1,7 @@
 disknum=$1
 
 all_disk_temps() {
-    for i in $(seq 1 $1); do
+    for i in $(seq 1 $disknum); do
         sudo smartctl --all -d sat /dev/sata$i | grep Temperature_Celsius | awk '{ print $10 }'
     done
 }
